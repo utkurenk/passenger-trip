@@ -1,0 +1,370 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Passenger - Trip RESTApi",
+    "description": "An API that allows users to obtain existing information of passengers and trips, or post information on new passengers or new trips",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8000/api"
+    }
+  ],
+  "paths": {
+    "/passenger": {
+      "get": {
+        "summary": "Get existing passengers",
+        "description": "Get existing passengers",
+        "operationId": "getPassenger",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a new passenger",
+        "description": "Add a passenger",
+        "operationId": "addPassenger",
+        "parameters": [
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "Name of the passenger",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Email",
+            "in": "query",
+            "description": "e-mail of the passenger",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Country",
+            "in": "query",
+            "description": "Country of the passenger",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "City",
+            "in": "query",
+            "description": "City of the passenger",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "HomeLatitude",
+            "in": "query",
+            "description": "Latitude of the passenger's home",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "HomeLongitude",
+            "in": "query",
+            "description": "Longitude of the passenger's home",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/trip": {
+      "get": {
+        "summary": "Get existing trips",
+        "description": "Get existing trips",
+        "operationId": "getTrip",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a new trip",
+        "description": "Add a trip",
+        "operationId": "addTrip",
+        "parameters": [
+          {
+            "name": "CreatedAt",
+            "in": "query",
+            "description": "Date and time of the creation of the trip",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PassengerID",
+            "in": "query",
+            "description": "ID of the integer",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "DestinationLatitude",
+            "in": "query",
+            "description": "Latitude of the destination",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "DestinationLongitude",
+            "in": "query",
+            "description": "Longitude of the destination",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "Distance",
+            "in": "query",
+            "description": "Distance between the destination and the home of the passenger",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/passenger/{ID}": {
+      "get": {
+        "summary": "Get an existing passenger",
+        "description": "Get existing passenger",
+        "operationId": "getPassengerSingle",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "path",
+            "description": "Id of passenger",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing passenger",
+        "description": "Update an existing passenger",
+        "operationId": "updatePassenger",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "path",
+            "description": "Id of passenger",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "CreatedAt",
+            "in": "query",
+            "description": "Date and time of the creation of the trip",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PassengerID",
+            "in": "query",
+            "description": "ID of the passenger",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "DestinationLatitude",
+            "in": "query",
+            "description": "Latitude of the destination",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "DestinationLongitude",
+            "in": "query",
+            "description": "Longitude of the destination",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "Distance",
+            "in": "query",
+            "description": "Distance between the destination and the home of the passenger",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing passenger",
+        "description": "Delete an existing passenger",
+        "operationId": "deletePassenger",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "path",
+            "description": "Id of passenger",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/trip/{ID}": {
+      "get": {
+        "summary": "Get an existing trip",
+        "description": "Get existing trip",
+        "operationId": "getTripSingle",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "path",
+            "description": "Id of trip",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing trip",
+        "description": "Update an existing trip",
+        "operationId": "updateTrip",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "path",
+            "description": "Id of trip",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "CreatedAt",
+            "in": "query",
+            "description": "Date and time of the creation of the trip",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PassengerID",
+            "in": "query",
+            "description": "ID of the passenger",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "DestinationLatitude",
+            "in": "query",
+            "description": "Latitude of the destination",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "DestinationLongitude",
+            "in": "query",
+            "description": "Longitude of the destination",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "Distance",
+            "in": "query",
+            "description": "Distance between the destination and the home of the passenger",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing trip",
+        "description": "Delete an existing trip",
+        "operationId": "deleteTrip",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "path",
+            "description": "Id of the trip",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    }
+  }
+}
