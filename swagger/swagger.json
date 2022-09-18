@@ -1,14 +1,19 @@
 {
-  "openapi": "3.0.3",
+  "swagger": "2.0",
   "info": {
-    "title": "Passenger - Trip RESTApi",
-    "description": "An API that allows users to obtain existing information of passengers and trips, or post information on new passengers or new trips",
-    "version": "1.0"
+    "version": "1.0.0",
+    "title": "Passenger-Trip API"
   },
-  "servers": [
-    {
-      "url": "http://127.0.0.1:8000/api"
-    }
+  "host": "127.0.0.1:8000",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
   ],
   "paths": {
     "/passenger": {
@@ -26,60 +31,51 @@
         "summary": "Add a new passenger",
         "description": "Add a passenger",
         "operationId": "addPassenger",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
         "parameters": [
           {
             "name": "Name",
-            "in": "query",
+            "in": "formData",
             "description": "Name of the passenger",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           },
           {
             "name": "Email",
-            "in": "query",
+            "in": "formData",
             "description": "e-mail of the passenger",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           },
           {
             "name": "Country",
-            "in": "query",
+            "in": "formData",
             "description": "Country of the passenger",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           },
           {
             "name": "City",
-            "in": "query",
+            "in": "formData",
             "description": "City of the passenger",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           },
           {
             "name": "HomeLatitude",
-            "in": "query",
+            "in": "formData",
             "description": "Latitude of the passenger's home",
             "required": true,
-            "schema": {
-              "type": "number"
-            }
+            "type": "number"
           },
           {
             "name": "HomeLongitude",
-            "in": "query",
+            "in": "formData",
             "description": "Longitude of the passenger's home",
             "required": true,
-            "schema": {
-              "type": "number"
-            }
+            "type": "number"
           }
         ],
         "responses": {
@@ -104,49 +100,42 @@
         "summary": "Add a new trip",
         "description": "Add a trip",
         "operationId": "addTrip",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
         "parameters": [
           {
             "name": "CreatedAt",
-            "in": "query",
+            "in": "formData",
             "description": "Date and time of the creation of the trip",
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           },
           {
             "name": "PassengerID",
-            "in": "query",
+            "in": "formData",
             "description": "ID of the integer",
             "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "type": "integer"
           },
           {
             "name": "DestinationLatitude",
-            "in": "query",
+            "in": "formData",
             "description": "Latitude of the destination",
             "required": true,
-            "schema": {
-              "type": "number"
-            }
+            "type": "number"
           },
           {
             "name": "DestinationLongitude",
-            "in": "query",
+            "in": "formData",
             "description": "Longitude of the destination",
             "required": true,
-            "schema": {
-              "type": "number"
-            }
+            "type": "number"
           },
           {
             "name": "Distance",
-            "in": "query",
+            "in": "formData",
             "description": "Distance between the destination and the home of the passenger",
-            "schema": {
-              "type": "integer"
-            }
+            "type": "integer"
           }
         ],
         "responses": {
@@ -167,9 +156,7 @@
             "in": "path",
             "description": "Id of passenger",
             "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "type": "integer"
           }
         ],
         "responses": {
@@ -182,55 +169,64 @@
         "summary": "Update an existing passenger",
         "description": "Update an existing passenger",
         "operationId": "updatePassenger",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
         "parameters": [
           {
             "name": "ID",
             "in": "path",
             "description": "Id of passenger",
             "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "type": "integer"
           },
           {
-            "name": "CreatedAt",
-            "in": "query",
-            "description": "Date and time of the creation of the trip",
-            "schema": {
-              "type": "string"
-            }
+            "name": "Name",
+            "in": "formData",
+            "description": "Name of the passenger",
+            "type": "integer",
+            "required": true
           },
           {
-            "name": "PassengerID",
-            "in": "query",
-            "description": "ID of the passenger",
-            "schema": {
-              "type": "integer"
-            }
+            "name": "Email",
+            "in": "formData",
+            "description": "e-mail of the passenger",
+            "required": true,
+            "type": "string"
           },
           {
-            "name": "DestinationLatitude",
-            "in": "query",
-            "description": "Latitude of the destination",
-            "schema": {
-              "type": "number"
-            }
+            "name": "Country",
+            "in": "formData",
+            "description": "Country of the passenger",
+            "required": true,
+            "type": "string"
           },
           {
-            "name": "DestinationLongitude",
-            "in": "query",
-            "description": "Longitude of the destination",
-            "schema": {
-              "type": "number"
-            }
+            "name": "City",
+            "in": "formData",
+            "description": "City of the passenger",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "HomeLatitude",
+            "in": "formData",
+            "description": "Latitude of the passenger's home",
+            "type": "number",
+            "required": true
+          },
+          {
+            "name": "HomeLongitude",
+            "in": "formData",
+            "description": "Longitude of the passenger's home",
+            "type": "number",
+            "required": true
           },
           {
             "name": "Distance",
-            "in": "query",
+            "in": "formData",
             "description": "Distance between the destination and the home of the passenger",
-            "schema": {
-              "type": "integer"
-            }
+            "type": "integer"
           }
         ],
         "responses": {
@@ -249,9 +245,7 @@
             "in": "path",
             "description": "Id of passenger",
             "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "type": "integer"
           }
         ],
         "responses": {
@@ -272,9 +266,7 @@
             "in": "path",
             "description": "Id of trip",
             "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "type": "integer"
           }
         ],
         "responses": {
@@ -287,55 +279,49 @@
         "summary": "Update an existing trip",
         "description": "Update an existing trip",
         "operationId": "updateTrip",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
         "parameters": [
           {
             "name": "ID",
             "in": "path",
             "description": "Id of trip",
             "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "type": "integer"
           },
           {
             "name": "CreatedAt",
-            "in": "query",
+            "in": "formData",
             "description": "Date and time of the creation of the trip",
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           },
           {
             "name": "PassengerID",
-            "in": "query",
+            "in": "formData",
             "description": "ID of the passenger",
-            "schema": {
-              "type": "integer"
-            }
+            "type": "integer",
+            "required": true
           },
           {
             "name": "DestinationLatitude",
-            "in": "query",
+            "in": "formData",
             "description": "Latitude of the destination",
-            "schema": {
-              "type": "number"
-            }
+            "required": true,
+            "type": "number"
           },
           {
             "name": "DestinationLongitude",
-            "in": "query",
+            "in": "formData",
             "description": "Longitude of the destination",
-            "schema": {
-              "type": "number"
-            }
+            "required": true,
+            "type": "number"
           },
           {
             "name": "Distance",
-            "in": "query",
+            "in": "formData",
             "description": "Distance between the destination and the home of the passenger",
-            "schema": {
-              "type": "integer"
-            }
+            "type": "integer"
           }
         ],
         "responses": {
@@ -354,9 +340,7 @@
             "in": "path",
             "description": "Id of the trip",
             "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "type": "integer"
           }
         ],
         "responses": {

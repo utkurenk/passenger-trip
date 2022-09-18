@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'primary',
     'api',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,9 +51,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'api.middleware.TestMiddleware',
 ]
 
 ROOT_URLCONF = 'trips.urls'
+CORS_ALLOW_ALL_ORIGINS = True
 
 TEMPLATES = [
     {
@@ -124,3 +128,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'celery.task.email@gmail.com'
+EMAIL_HOST_PASSWORD = 'fzmqtvnffmgqphjy'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'celery.task.email@gmail.com'

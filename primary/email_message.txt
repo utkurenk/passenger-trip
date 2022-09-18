@@ -1,0 +1,5 @@
+Hello {{name}}
+
+Here are you trip details:
+Distance: {{distance}}
+Coordinates: {{coordinates}}

@@ -1,6 +1,7 @@
 # from django.contrib.gis.db import models
 from django.db import models
 import geopy.distance
+from .tasks import send_email_task
 
 
 class Passenger(models.Model):
@@ -28,4 +29,6 @@ class PassengerTrip(models.Model):
         self.Distance = self.calculate_distance()
         return super(PassengerTrip, self).save(*args, **kwargs)
 
+    def send_email(self):
+        send_email_task(self.PassengerID.Name, self.PassengerID.Email, self.Distance, (self.DestinationLatitude, self.DestinationLongitude))
 
